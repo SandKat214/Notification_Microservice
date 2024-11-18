@@ -1,6 +1,6 @@
 require("dotenv").config()
 
-const cors = require("express")
+const cors = require("cors")
 const express = require("express")
 const routes = require("./routes")
 
@@ -9,7 +9,7 @@ const app = express()
 const PORT = process.env.PORT
 
 // middleware
-app.use(cors({ credentials: true, origin: '*'}))
+app.use(cors({ credentials: true, origin: "*" }))
 app.use(express.json())
 app.use((req, res, next) => {
     console.log(req.path, req.method)
@@ -17,7 +17,7 @@ app.use((req, res, next) => {
 })
 
 // routes
-app.use("/notify/", routes)
+app.use("/notify", routes)
 
 // server
 app.listen(PORT, () => {
